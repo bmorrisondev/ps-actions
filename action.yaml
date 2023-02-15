@@ -1,7 +1,7 @@
-name: 'Hello new branch!'
-description: 'Make a branch'
+name: 'Create Database Branch'
+description: 'Creates a branch for a PlanetScale database.'
 inputs:
-  database_name:  # id of input
+  database_name:
     description: 'The name of the database'
     required: true
   branch_name:
@@ -19,9 +19,18 @@ inputs:
   region:
     description: 'The region where the new branch should be created. Defaults to the region of the source branch.'
     required: false
-# outputs:
-#   time: # id of output
-#     description: 'The time we greeted you'
+  generate_credentials:
+    description: 'If true, the action will generate credentials and set them in the respective outputs.'
+    required: false
+outputs:
+  password_name:
+    description: 'If `generate_credentials` is set, will contain the name generated for the credentials in the format of "gha<<UNIX_TIMESTAMP>>".'
+  username:
+    description: 'If `generate_credentials` is set, will contain the username for the branch.'
+  password:
+    description: 'If `generate_credentials` is set, will contain the password for the branch.'
+  hostname:
+    description: 'If `generate_credentials` is set, will contain the hostname for the branch.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -30,3 +39,6 @@ runs:
     - ${{ inputs.branch_name }}
     - ${{ inputs.org_name }}
     - ${{ inputs.source_branch }}
+    - ${{ inputs.restore_from }}
+    - ${{ inputs.region }}
+    - ${{ inputs.generate_credentials }}

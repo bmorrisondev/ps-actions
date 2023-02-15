@@ -16,3 +16,12 @@ if [ -n "$6" ];then
 fi
 
 eval $command
+
+if [ "true" == "$7" ];then
+  password_name="gha$( date +%s )"
+  jout=$(pscale password create $1 $2 $password_name -f json)
+  echo "password_name=$password_name" >> $GITHUB_OUTPUT
+  echo "username=$( jq -r '.name' <<< "${jout}")" >> $GITHUB_OUTPUT
+  echo "password=$( jq -r '.plain_text' <<< "${jout}")" >> $GITHUB_OUTPUT
+  echo "hostname=$( jq -r '.database_branch.access_host_url' <<< "${jout}")" >> $GITHUB_OUTPUT
+fi

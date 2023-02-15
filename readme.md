@@ -24,6 +24,7 @@ jobs:
           database_name: recipes_db
           branch_name: mynewbranch
           source_branch: main
+          generate_credentials: true
         env:
           PLANETSCALE_TOKEN_NAME: ${{ secrets.PLANETSCALE_TOKEN_NAME }}
           PLANETSCALE_TOKEN: ${{ secrets.PLANETSCALE_TOKEN }}
