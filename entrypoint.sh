@@ -19,7 +19,7 @@ eval $command
 
 if [ "true" == "$7" ];then
   password_name="gha$( date +%s )"
-  jout=$(pscale password create $1 $2 $password_name -f json --service-token $PLANETSCALE_TOKEN --service-token-id $PLANETSCALE_TOKEN_NAME)
+  jout=$(pscale password create $1 $2 $password_name --org $3 -f json --service-token $PLANETSCALE_TOKEN --service-token-id $PLANETSCALE_TOKEN_NAME)
   echo "jout is $jout"
   username=$(jq -n "$jout" | jq '.username')
   password=$(jq -n "$jout" | jq '.plain_text')
