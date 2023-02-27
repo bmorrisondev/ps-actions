@@ -16,16 +16,3 @@ if [ -n "$6" ];then
 fi
 
 eval $command
-
-if [ "true" == "$7" ];then
-  password_name="gha$( date +%s )"
-  jout=$(pscale password create $1 $2 $password_name --org $3 -f json --service-token $PLANETSCALE_TOKEN --service-token-id $PLANETSCALE_TOKEN_NAME)
-  echo "jout is $jout"
-  username=$(jq -n "$jout" | jq '.username')
-  password=$(jq -n "$jout" | jq '.plain_text')
-  hostname=$(jq -n "$jout" | jq '.database_branch.access_host_url')
-  echo "password_name=$password_name" >> $GITHUB_OUTPUT
-  echo "username=$username" >> $GITHUB_OUTPUT
-  echo "password=$password" >> $GITHUB_OUTPUT
-  echo "hostname=$hostname" >> $GITHUB_OUTPUT
-fi
