@@ -44,9 +44,9 @@ jobs:
 
 **Required**
 
-- `org_name` - The name of the PlanetScale organization
-- `database_name` - The name of the database to create the branch on
-- `branch_name` - The name of the new branch
+- `org_name` - The name of the PlanetScale organization.
+- `database_name` - The name of the database to create the branch on.
+- `branch_name` - The name of the new branch.
 
 **Optional**
 
