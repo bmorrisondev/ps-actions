@@ -1,0 +1,26 @@
+name: 'Create Deploy Request'
+description: 'Creates a deploy request for a PlanetScale database.'
+inputs:
+  database_name:
+    description: 'The name of the database.'
+    required: true
+  number:
+    description: 'The number of the deploy request to deploy.'
+    required: true
+  org_name:
+    description: 'The name of the organization that owns the database.'
+    required: true
+  wait_for_status:
+    description: 'If set to `true`, this action will poll for the status of the deploy request before exiting and populate the `status` output.'
+    required: false
+outputs:
+  status:
+    description: 'If `wait_for_status` is specified, this will be the status of the deploy request after it has been processed.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.database_name }}
+    - ${{ inputs.number }}
+    - ${{ inputs.org_name }}
+    - ${{ inputs.wait_for_status }}
