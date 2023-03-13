@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 PSCALE_CLI_HELPER_SCRIPTS_NAME=pscale-workflow-helper-scripts
 RELEASE_VERSION=781fa51d4cbb488cba6613e3d4250198e27cc7a7
@@ -22,6 +22,7 @@ echo "Successfully installed pscale-workflow-helper-scripts"
 echo
 echo "Please run 'git add .pscale .github/workflows' and commit changes using 'git commit -m \"Add pscale helper scripts and IssueOps workflows\"'"
 echo "Then run 'git push' to push changes"
+
 
 
 

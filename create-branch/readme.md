@@ -6,8 +6,8 @@ This GitHub Action can be used within your workflows to create new branches of y
 
 Before you can use this Action, you'll need to configure a service token that has permissions to create branches on your database. Refer to our docs on [how to create a service token](https://planetscale.com/docs/concepts/service-tokens) for more details. Once the service token has been created, the following repository secrets must also be set:
 
-- `PLANETSCALE_TOKEN_NAME`
-- `PLANETSCALE_TOKEN`
+- `PLANETSCALE_SERVICE_TOKEN_ID`
+- `PLANETSCALE_SERVICE_TOKEN`
 
 These values will be used to authenticate to the PlanetScale service.
 
@@ -17,7 +17,7 @@ The following example will create a branch on the `recipes_db` database when a p
 
 ```yml
 name: Create a branch
-on: 
+on:
   pull_request:
     types: [opened]
 
@@ -36,8 +36,8 @@ jobs:
           branch_name: mynewbranch
           from: main
         env:
-          PLANETSCALE_TOKEN_NAME: ${{ secrets.PLANETSCALE_TOKEN_NAME }}
-          PLANETSCALE_TOKEN: ${{ secrets.PLANETSCALE_TOKEN }}
+          PLANETSCALE_SERVICE_TOKEN_ID: ${{ secrets.PLANETSCALE_SERVICE_TOKEN_ID }}
+          PLANETSCALE_SERVICE_TOKEN: ${{ secrets.PLANETSCALE_SERVICE_TOKEN }}
 ```
 
 ## Input variables
