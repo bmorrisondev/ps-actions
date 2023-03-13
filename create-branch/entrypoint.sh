@@ -16,3 +16,9 @@ if [ -n "$6" ];then
 fi
 
 eval $command
+
+if [ "true" == "$7"];then
+  # wait for branch creation
+  . /.pscale/cli-helper-scripts/wait-for-branch-readiness.sh
+  wait_for_branch_readiness 10 "$1" "$2" "$3" 20
+fi
